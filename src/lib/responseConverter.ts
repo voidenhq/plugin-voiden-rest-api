@@ -161,7 +161,7 @@ export function convertResponseToVoidenDoc(response: HttpResponse): any {
   const resolvedBody = (() => {
     const b = response.body;
     if (!b) return null;
-    if (Buffer.isBuffer(b) && b.length === 0) return null;
+    if (b instanceof Uint8Array && b.length === 0) return null;
     if (b instanceof ArrayBuffer && b.byteLength === 0) return null;
     if (typeof b === 'string' && b.trim() === '') return null;
     return b;

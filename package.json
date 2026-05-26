@@ -1,6 +1,6 @@
 {
   "name": "@voiden/plugin-voiden-rest-api",
-  "version": "1.4.2",
+  "version": "1.4.1",
   "type": "module",
   "private": false,
   "description": "HTTP/REST API testing toolkit with extensible request pipeline, custom blocks for headers/body, environment variables, response visualization, and support for all HTTP methods including multipart file uploads",

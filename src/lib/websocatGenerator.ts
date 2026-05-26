@@ -41,7 +41,7 @@ export const generateWebsocatCommand = (data: WebSocketRequestData): string => {
     if (type === 'bearer-token' && cfg.token) {
       parts.push(`-H "Authorization: ${cfg.headerPrefix || 'Bearer'} ${cfg.token}"`);
     } else if (type === 'basic-auth' && (cfg.username || cfg.password)) {
-      const token = Buffer.from(`${cfg.username || ''}:${cfg.password || ''}`).toString('base64');
+      const token = btoa(`${cfg.username || ''}:${cfg.password || ''}`);
       parts.push(`-H "Authorization: Basic ${token}"`);
     } else if (type === 'api-key') {
       parts.push(`-H "${cfg.key || ''}: ${cfg.value || ''}"`);

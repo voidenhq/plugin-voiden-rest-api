@@ -400,6 +400,7 @@ const voidenRestApiPlugin = (context: PluginContext) => {
             { readOnly: true }
           );
         } catch (error) {
+          console.error('[voiden-rest-api] onProcessResponse failed:', error);
         }
       });
 

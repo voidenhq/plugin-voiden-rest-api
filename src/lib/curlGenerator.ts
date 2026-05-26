@@ -151,7 +151,7 @@ export const generateCurlFromRequestObject = (req: any): string => {
             data.headers = data.headers || [];
             data.headers.push({ key: 'Authorization', value: `${cfg.headerPrefix || 'Bearer'} ${cfg.token}` });
         } else if (type === 'basic-auth' && (cfg.username || cfg.password)) {
-            const token = Buffer.from(`${cfg.username || ''}:${cfg.password || ''}`).toString('base64');
+            const token = btoa(`${cfg.username || ''}:${cfg.password || ''}`);
             data.headers = data.headers || [];
             data.headers.push({ key: 'Authorization', value: `Basic ${token}` });
         } else if (type === 'api-key') {
