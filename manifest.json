@@ -2,10 +2,9 @@
   "id": "voiden-rest-api",
   "name": "Voiden REST API",
   "description": "HTTP/REST API testing toolkit with extensible request pipeline, custom blocks for headers/body, environment variables, response visualization, and support for all HTTP methods including multipart file uploads",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "voidenVersion": ">=2.0.0",
   "author": "Voiden Team",
-  "enabled": true,
   "priority": 10,
   "readme": "Complete REST API testing extension with HTTP methods, headers, query params, body, and response visualization. Built on the new SDK pipeline architecture.",
   "capabilities": {
@@ -31,7 +30,6 @@
       "allowExtensions": true,
       "description": "Owns 14 block types for HTTP request/response building and visualization"
     },
-
     "paste": {
       "patterns": [
         {
@@ -52,18 +50,15 @@
         }
       ]
     },
-
     "requestPipeline": {
       "buildHandler": true,
       "responseHandler": true,
       "description": "Registers handlers for building requests and processing responses"
     },
-
     "history": {
       "registersCurlBuilder": true,
       "description": "Registers a REST-aware cURL builder for history entries. Other plugins can do the same via context.history.registerCurlBuilder()."
     },
-
     "slashCommands": {
       "groups": [
         {
@@ -78,12 +73,10 @@
       ]
     }
   },
-
   "dependencies": {
     "core": "^1.0.0",
     "sdk": "^1.0.0"
   },
-
   "features": [
     "HTTP method selection (GET, POST, PUT, DELETE, PATCH, etc.)",
     "URL building with path parameters and query strings",
