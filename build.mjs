@@ -33,6 +33,7 @@ const ADDITIONAL_SHIMS = {
   '@voiden/sdk': "const _s=window.__voiden_shims__['@voiden/sdk']||{};export default _s;export const {PipelineStage,PluginContext,RequestCompilationContext,SlashCommandGroup,UIExtension}=_s;",
   '@voiden/sdk/shared': "const _s=window.__voiden_shims__['@voiden/sdk/shared']||{};export default _s;export const {Request,RequestParam,parseCookies}=_s;",
   'tippy.js': "const _s=window.__voiden_shims__['tippy.js']||{};export default _s;",
+  'yaml': "const _s=window.__voiden_shims__['yaml']||{};export default _s;export const {parse,stringify,parseDocument,parseAllDocuments,Document,Node,Scalar,YAMLMap,YAMLSeq,YAMLError,Alias,isAlias,isCollection,isDocument,isMap,isNode,isPair,isScalar,isSeq}=_s;",
 }
 Object.assign(STATIC_SHIMS, ADDITIONAL_SHIMS)
 
