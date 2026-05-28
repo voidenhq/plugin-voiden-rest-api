@@ -63,6 +63,11 @@ function shimPlugin() {
     resolveId(id) {
       if (id in STATIC_SHIMS) return `\0shim:${id}`
       if (id in CORE_EXPORTS) return `\0shim:${id}`
+      // Catch-all: shim any bare package not explicitly listed so React and other
+      // host-provided singletons are never bundled inline (avoids duplicate React).
+      if (!id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0') && !id.startsWith('node:') && !id.startsWith('\\')) {
+        return `\0shim:${id}`
+      }
       return null
     },
     load(id) {
