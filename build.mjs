@@ -60,6 +60,7 @@ const CORE_EXPORTS = {
 function shimPlugin() {
   return {
     name: 'voiden-shims',
+    enforce: 'pre',
     resolveId(id) {
       if (id in STATIC_SHIMS) return `\0shim:${id}`
       if (id in CORE_EXPORTS) return `\0shim:${id}`
