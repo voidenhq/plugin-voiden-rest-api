@@ -1,0 +1,57 @@
+[
+  {
+    "version": "v1.4.3",
+    "date": "29/05/2026",
+    "title": "Help Commands",
+    "changes": {
+      "Added": [
+        "Register help entries in the command palette for HTTP headers, body types, query params, path params, cookies, and request options"
+      ]
+    }
+  },
+  {
+    "version": "v1.4.2",
+    "date": "27/05/2026",
+    "title": "Build & Shim Fixes",
+    "description": "Build system improvements and yaml shim support for reliable OTA loading.",
+    "changes": {
+      "Fixed": [
+        "Removed catch-all shim that caused xs is not a function runtime error",
+        "Added yaml to host-provided shims so YAML body type loads correctly"
+      ]
+    }
+  },
+  {
+    "version": "v1.4.1",
+    "date": "01/05/2026",
+    "title": "Multipart & Pipeline Improvements",
+    "description": "Reliability improvements for file uploads and request pipeline hooks.",
+    "changes": {
+      "Improved": [
+        "Multipart file upload now supports multiple files per key",
+        "Request pipeline hook ordering made deterministic"
+      ],
+      "Fixed": [
+        "URL-encoded body correctly encodes special characters",
+        "Response body syntax highlight no longer flickers on large payloads"
+      ]
+    }
+  },
+  {
+    "version": "v1.4.0",
+    "date": "15/04/2026",
+    "title": "SDK Pipeline Architecture",
+    "description": "Full rewrite on the new SDK pipeline architecture.",
+    "changes": {
+      "Added": [
+        "New SDK-based request and response pipeline handlers",
+        "cURL import via paste with full header and body parsing",
+        "History API integration with custom cURL builder"
+      ],
+      "Improved": [
+        "All HTTP methods including multipart file uploads",
+        "Environment variable substitution across all block types"
+      ]
+    }
+  }
+]
