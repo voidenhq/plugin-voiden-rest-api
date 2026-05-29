@@ -569,6 +569,81 @@ const voidenRestApiPlugin = (context: PluginContext) => {
       // Also expose under the correct extension name
       (window as any).__voidenHelpers__['voiden-rest-api'] = helpers;
 
+      // ── Help commands ──────────────────────────────────────────────────────
+      const {
+        HttpHeadersHelp,
+        HttpQueryParamsHelp,
+        HttpUrlFormHelp,
+        HttpMultipartFormHelp,
+        HttpPathParamsHelp,
+        HttpJsonBodyHelp,
+        HttpXmlBodyHelp,
+        HttpYmlBodyHelp,
+        HttpCookiesHelp,
+        RequestOptionsHelp,
+      } = await import('./help/index');
+
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-headers',
+        label: 'HTTP Headers',
+        description: 'Learn about HTTP headers and how to use them',
+        component: HttpHeadersHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-query-params',
+        label: 'Query Parameters',
+        description: 'Learn about query parameters and how to use them',
+        component: HttpQueryParamsHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-url-form',
+        label: 'URL-Encoded Form',
+        description: 'Learn about URL-encoded form data',
+        component: HttpUrlFormHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-multipart-form',
+        label: 'Multipart Form',
+        description: 'Learn about multipart form data and file uploads',
+        component: HttpMultipartFormHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-path-params',
+        label: 'Path Parameters',
+        description: 'Learn about path parameters in URLs',
+        component: HttpPathParamsHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-json-body',
+        label: 'JSON Body',
+        description: 'Learn about sending JSON request bodies',
+        component: HttpJsonBodyHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-xml-body',
+        label: 'XML Body',
+        description: 'Learn about sending XML request bodies',
+        component: HttpXmlBodyHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-yml-body',
+        label: 'YAML Body',
+        description: 'Learn about sending YAML request bodies',
+        component: HttpYmlBodyHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-cookies',
+        label: 'HTTP Cookies',
+        description: 'Learn about sending cookies with requests',
+        component: HttpCookiesHelp,
+      });
+      (context as any).registerHelpCommand?.({
+        id: 'voiden-rest-api.help-request-options',
+        label: 'Request Options',
+        description: 'Learn about per-request configuration options',
+        component: RequestOptionsHelp,
+      });
+
       // Inject context into extension BEFORE calling onLoad
       const extensionContext = createExtensionContext();
 
