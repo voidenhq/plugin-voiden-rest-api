@@ -17,6 +17,7 @@
   "devDependencies": {
     "@voiden/sdk": "1.0.10",
     "esbuild": "^0.20.0",
+    "lossless-json": "^4.3.0",
     "typescript": "^5.0.0",
     "vite": "^5.0.0"
   }

@@ -11,6 +11,15 @@
 import * as React from "react";
 import { Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+import { parse as losslessParse, stringify as losslessStringify, LosslessNumber } from "lossless-json";
+
+function losslessNumberParser(v: string): number | LosslessNumber {
+  if (/^-?\d+$/.test(v)) {
+    const n = Number(v);
+    if (!Number.isSafeInteger(n)) return new LosslessNumber(v);
+  }
+  return Number(v);
+}
 import { AlertCircle, Check, ChevronDown, Copy, Download, Eye, FileDown, FileText, WrapText } from "lucide-react";
 
 type LangOption = { label: string; value: string };
@@ -49,7 +58,8 @@ const PRETTIFIABLE_LANGS = new Set(["json", "xml", "html", "yaml", "javascript",
 const prettifyContent = (text: string, lang: string): string => {
   try {
     if (lang === "json") {
-      return JSON.stringify(JSON.parse(text), null, 2);
+      return losslessStringify(losslessParse(text, undefined, losslessNumberParser), undefined, 2)
+        ?? JSON.stringify(JSON.parse(text), null, 2);
     }
     if (lang === "xml" || lang === "html") {
       return prettifyHtml(text);
