@@ -436,14 +436,18 @@ async function exportToVoid(entry: any): Promise<string> {
   const content: any[] = [];
 
   content.push({
-    type: 'method',
-    attrs: { method: req.method },
-    content: [{ type: 'text', text: req.method }],
-  });
-
-  content.push({
-    type: 'url',
-    content: [{ type: 'text', text: req.url }],
+    type: 'request',
+    content: [
+      {
+        type: 'method',
+        attrs: { method: req.method },
+        content: [{ type: 'text', text: req.method }],
+      },
+      {
+        type: 'url',
+        content: [{ type: 'text', text: req.url }],
+      },
+    ],
   });
 
   if (req.headers && req.headers.length > 0) {
