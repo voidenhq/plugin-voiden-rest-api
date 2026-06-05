@@ -27,6 +27,7 @@ jobs:
         with:
           files: |
             dist/voiden-rest-api.js
+            dist/changelog.json
             dist/voiden-rest-api-runner.js
             src/skill.md
             manifest.json
