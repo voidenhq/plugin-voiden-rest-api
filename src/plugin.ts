@@ -244,6 +244,85 @@ const voidenRestApiPlugin = (context: PluginContext) => {
       });
 
 
+      // Register block outline metadata for the Block Overview panel.
+      // Cast to any: registerBlockOutlineMeta is a host-injected API not yet in the published SDK type.
+      (context as any).registerBlockOutlineMeta({
+        request: {
+          label: "Request",
+          icon: "Send",
+          // Render as a block card at its document position showing "METHOD URL" as preview.
+          // method and url are internal children — skipped at top level via SKIP_TYPES in the panel.
+          getPreview: (_attrs: Record<string, any>, textContent: string) => {
+            if (!textContent) return undefined;
+            const methods = ["DELETE", "OPTIONS", "PATCH", "POST", "PUT", "GET", "HEAD"];
+            for (const m of methods) {
+              if (textContent.startsWith(m)) {
+                const url = textContent.slice(m.length);
+                return url ? `${m} ${url}` : m;
+              }
+            }
+            return textContent.length > 50 ? textContent.slice(0, 50) + "…" : textContent;
+          },
+        },
+        method: { label: "Method", icon: "Zap" },
+        url: { label: "URL", icon: "Globe" },
+        "headers-table": {
+          label: "Headers",
+          icon: "Hash",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        "query-table": {
+          label: "Query Params",
+          icon: "Search",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        "path-table": {
+          label: "Path Params",
+          icon: "Route",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        "cookies-table": {
+          label: "Cookies",
+          icon: "Cookie",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        "options-table": {
+          label: "Options",
+          icon: "Settings2",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        "url-table": {
+          label: "URL Params",
+          icon: "Globe",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        "multipart-table": {
+          label: "Multipart",
+          icon: "Layers",
+          getRowCount: (_attrs, childCount) => childCount > 0 ? childCount : undefined,
+        },
+        json_body: {
+          label: "JSON Body",
+          icon: "Braces",
+          getPreview: (attrs) => attrs?.language || "json",
+        },
+        xml_body: {
+          label: "XML Body",
+          icon: "Code2",
+          getPreview: () => "xml",
+        },
+        yml_body: {
+          label: "YAML Body",
+          icon: "AlignLeft",
+          getPreview: () => "yaml",
+        },
+        restFile: {
+          label: "File Upload",
+          icon: "FileUp",
+          getPreview: (attrs) => attrs?.fileName || undefined,
+        },
+      });
+
       // Register table cell autocomplete suggestions
       context.registerTableSuggestions('headers-table', {
         0: [

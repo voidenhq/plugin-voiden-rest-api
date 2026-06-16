@@ -1,6 +1,22 @@
 [
   {
-    "version": "v1.4.3",
+    "version": "v1.4.2",
+    "date": "16/06/2026",
+    "title": "Block Overview Panel Integration",
+    "description": "Registers block outline metadata for all REST node types so the Block Overview Panel displays them correctly at their document positions.",
+    "changes": {
+      "Added": [
+        "Block outline metadata registered for all REST node types: headers-table, query-table, path-table, cookies-table, options-table, url-table, multipart-table, json_body, xml_body, yml_body, and file upload — with labels, icons, and row counts",
+        "Request node now renders as a block card in the Block Overview Panel at its actual document position, with method and URL shown as a preview"
+      ],
+      "Changed": [
+        "Request container is no longer merged into the section header; it appears inline with other blocks in document order",
+        "Method and URL child nodes are excluded from the block outline as standalone entries since their data is surfaced through the request block card preview"
+      ]
+    }
+  },
+  {
+    "version": "v1.4.4",
     "date": "29/05/2026",
     "title": "Help Commands",
     "changes": {
@@ -10,7 +26,7 @@
     }
   },
   {
-    "version": "v1.4.2",
+    "version": "v1.4.3",
     "date": "27/05/2026",
     "title": "Build & Shim Fixes",
     "description": "Build system improvements and yaml shim support for reliable OTA loading.",
