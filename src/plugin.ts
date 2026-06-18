@@ -264,8 +264,8 @@ const voidenRestApiPlugin = (context: PluginContext) => {
             return textContent.length > 50 ? textContent.slice(0, 50) + "…" : textContent;
           },
         },
-        method: { label: "Method", icon: "Zap" },
-        url: { label: "URL", icon: "Globe" },
+        method: { label: "Method", icon: "Zap", skip: true },
+        url: { label: "URL", icon: "Globe", skip: true },
         "headers-table": {
           label: "Headers",
           icon: "Hash",
