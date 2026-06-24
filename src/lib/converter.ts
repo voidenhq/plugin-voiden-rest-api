@@ -15,6 +15,7 @@ export const REQUEST_NODES = [
   "url",
   "headers-table",
   "query-table",
+  "path-table",
   "url-table",
   "multipart-table",
   "cookies-table",
@@ -120,6 +121,16 @@ export const convertToHeadersTableNode = (data: TwoDimensionalArray) => {
 export const convertToQueryTableNode = (data: TwoDimensionalArray) => {
   return {
     type: "query-table",
+    content: convertDataToTableNode(data),
+  };
+};
+
+/**
+ * Create path params table node
+ */
+export const convertToPathTableNode = (data: TwoDimensionalArray) => {
+  return {
+    type: "path-table",
     content: convertDataToTableNode(data),
   };
 };

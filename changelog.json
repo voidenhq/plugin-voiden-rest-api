@@ -1,5 +1,17 @@
 [
   {
+    "version": "v1.4.3",
+    "date": "24/06/2026",
+    "title": "Path Params Helper",
+    "description": "Exposes a createPathParamsTableNode helper so other plugins (e.g. postman-import) can programmatically generate path-table blocks.",
+    "changes": {
+      "Added": [
+        "createPathParamsTableNode helper exported from voiden-rest-api for building path-table blocks programmatically",
+        "path-table added to the REQUEST_NODES list used for paragraph spacing after request blocks"
+      ]
+    }
+  },
+  {
     "version": "v1.4.2",
     "date": "16/06/2026",
     "title": "Block Overview Panel Integration",
