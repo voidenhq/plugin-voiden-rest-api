@@ -54,12 +54,23 @@ export const restApiSlashGroup: SlashCommandGroup = {
           ],
         }).run();
 
-        // Focus the URL input after insertion
+        // Focus the URL input after insertion. editor.$node("url") returns the
+        // FIRST url node in the whole document, not the one we just created —
+        // walk up from the current selection instead so this targets the
+        // newly-inserted endpoint even when earlier sections still have an
+        // untouched "https://" placeholder.
         setTimeout(() => {
-          const urlNode = editor.$node("url");
-          if (urlNode && urlNode.textContent === "https://") {
-            // Position cursor after "https://"
-            editor.commands.focus(urlNode.from + 8); // 8 = length of "https://"
+          const $pos = editor.state.selection.$from;
+          for (let d = $pos.depth; d > 0; d--) {
+            if ($pos.node(d).type.name === "url") {
+              const urlNode = $pos.node(d);
+              if (urlNode.textContent === "https://") {
+                const urlStart = $pos.before(d) + 1;
+                // Position cursor after "https://"
+                editor.commands.focus(urlStart + 8); // 8 = length of "https://"
+              }
+              break;
+            }
           }
         }, 50);
       },
