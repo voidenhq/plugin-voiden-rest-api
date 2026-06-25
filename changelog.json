@@ -8,6 +8,11 @@
       "Added": [
         "createPathParamsTableNode helper exported from voiden-rest-api for building path-table blocks programmatically",
         "path-table added to the REQUEST_NODES list used for paragraph spacing after request blocks"
+      ],
+      "Fixed": [
+        "Copy as cURL now includes JSON/XML/YAML bodies, multipart form data, and binary file uploads, matching what the request actually sends",
+        "Copy as cURL now substitutes path params into the URL instead of leaving the {param} placeholder",
+        "Creating a new endpoint via /endpoint no longer steals focus back to the first endpoint in the document"
       ]
     }
   },
